@@ -1,0 +1,38 @@
+<mvc:View controllerName="WarpingEntry.zppwarpingentry.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:F="sap.ui.layout.form"
+    xmlns:C="sap.ui.core"
+    xmlns:Tab="sap.ui.table"  
+    xmlns:table="sap.ui.table" 
+    xmlns:l="sap.ui.layout"
+    width="100%">
+    <Page id="page" title="{i18n>title}">
+         <F:SimpleForm id="Form1" layout="ResponsiveGridLayout" columnsL="2" editable="true">
+                <F:content>
+                <C:Title id="ctitle4" text="Warping Entry"/>
+                    <Label id="setno" text="Set No." />
+                    <Input id="Setno" showValueHelp="true" valueHelpRequest="F4MATDES"  width="150PX" editable="true"/>
+                </F:content>
+        </F:SimpleForm>
+         <F:SimpleForm id="Form2" layout="ResponsiveGridLayout" columnsL="3" editable="true">
+                <F:content>
+                    <RadioButtonGroup columns="1" id="idActionRadioBtnGroup" selectedIndex="0">
+                        <buttons>
+                            <RadioButton text="Create" id="IdAdd" />
+                            <RadioButton text="Change" id="IdChange"/>
+                        </buttons>
+                    </RadioButtonGroup>
+                    <C:Title id="ctitle2"/>
+
+                </F:content>
+            </F:SimpleForm>
+        <footer>
+            <Bar id="bar">
+                <contentRight>
+                    <Button id="button" text="Next Page"  icon="sap-icon://sys-next-page"  type="Emphasized" press="NextView" />
+                </contentRight>
+            </Bar>
+        </footer>
+    </Page>
+</mvc:View>

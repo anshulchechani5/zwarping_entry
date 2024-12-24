@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://my405100-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my405100-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my405100-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my405100-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my405100-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my405100-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my405100-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my405100-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my405100-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my405100-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="cds_zpp_warping_entry_def" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="BeamNoType" sap:label="Cds For  Warping Entry Beam No F4" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Plant"/>
+                    <PropertyRef Name="Beamno"/>
+                </Key>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="Beamno" Type="Edm.String" Nullable="false" MaxLength="5" sap:display-format="NonNegative"/>
+                <Property Name="Beamwt" Type="Edm.Decimal" Precision="8" Scale="3"/>
+                <Property Name="Remark" Type="Edm.String" MaxLength="40"/>
+            </EntityType>
+            <EntityType Name="Warping_EntryType" sap:label="Cds For  Warping Entry Module Pool" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ZmcNo"/>
+                    <PropertyRef Name="ZfsetNo"/>
+                </Key>
+                <Property Name="ZmcNo" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="ZfsetNo" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="UnitField" Type="Edm.String" MaxLength="3" sap:semantics="unit-of-measure"/>
+                <Property Name="Zlength" Type="Edm.Decimal" Precision="10" Scale="2" sap:unit="UnitField"/>
+                <Property Name="material" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Toatlends" Type="Edm.Decimal" Precision="15" Scale="0"/>
+                <Property Name="warpcount1" Type="Edm.String" MaxLength="20"/>
+                <Property Name="SateDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/>
+                <Property Name="ManufacturingOrder" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Manufacturing Order" sap:quickinfo="Manufacturing Order ID"/>
+                <Property Name="ActualDeliveredQuantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="ProductionUnit" sap:label="GR Quantity" sap:quickinfo="Quantity of Goods Received for the Order Item"/>
+                <Property Name="ProductionUnit" Type="Edm.String" MaxLength="3" sap:label="Production Unit" sap:quickinfo="Production Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="ManufacturingOrderType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Order Type"/>
+                <Property Name="SetApproved" Type="Edm.String" MaxLength="8"/>
+            </EntityType>
+            <EntityType Name="ChangeEntryType" sap:label="Cds For  Warping Entry Module Pool" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ZfsetNo"/>
+                    <PropertyRef Name="ZmcNo"/>
+                    <PropertyRef Name="Material"/>
+                </Key>
+                <Property Name="ZfsetNo" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="ZmcNo" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="Zlength" Type="Edm.Decimal" Precision="10" Scale="2"/>
+                <Property Name="Ends" Type="Edm.String" MaxLength="6" sap:display-format="NonNegative"/>
+                <Property Name="Beamno" Type="Edm.String" MaxLength="5" sap:display-format="NonNegative"/>
+                <Property Name="Beamlenght" Type="Edm.Decimal" Precision="8" Scale="3"/>
+                <Property Name="Grooswt" Type="Edm.Decimal" Precision="8" Scale="3" sap:unit="zunit"/>
+                <Property Name="Tarewt" Type="Edm.Decimal" Precision="8" Scale="3" sap:unit="zunit"/>
+                <Property Name="Netwt" Type="Edm.Decimal" Precision="8" Scale="3" sap:unit="zunit"/>
+                <Property Name="Rpm" Type="Edm.String" MaxLength="3" sap:display-format="NonNegative"/>
+                <Property Name="Warper" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Zcount" Type="Edm.Int32"/>
+                <Property Name="zunit" Type="Edm.String" MaxLength="3" sap:semantics="unit-of-measure"/>
+                <Property Name="breaks" Type="Edm.Int32"/>
+                <Property Name="breaksmtr" Type="Edm.Decimal" Precision="6" Scale="3"/>
+                <Property Name="zdate" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/>
+            </EntityType>
+            <EntityType Name="Set_No_CheackType" sap:label="Cds For Warping Entry Set No Cheack" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ZfsetNo"/>
+                </Key>
+                <Property Name="ZfsetNo" Type="Edm.String" Nullable="false" MaxLength="10"/>
+            </EntityType>
+            <EntityType Name="Set_No_F4Type" sap:label="Cds For  Warping Entry Set No F4" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ZfsetNo"/>
+                </Key>
+                <Property Name="ZfsetNo" Type="Edm.String" Nullable="false" MaxLength="10"/>
+            </EntityType>
+            <EntityContainer Name="cds_zpp_warping_entry_def_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="BeamNo" EntityType="cds_zpp_warping_entry_def.BeamNoType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Warping_Entry" EntityType="cds_zpp_warping_entry_def.Warping_EntryType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ChangeEntry" EntityType="cds_zpp_warping_entry_def.ChangeEntryType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Set_No_Cheack" EntityType="cds_zpp_warping_entry_def.Set_No_CheackType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Set_No_F4" EntityType="cds_zpp_warping_entry_def.Set_No_F4Type" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+            </EntityContainer>
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="cds_zpp_warping_entry_def.cds_zpp_warping_entry_def_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <Annotations Target="cds_zpp_warping_entry_def.cds_zpp_warping_entry_def_Entities/BeamNo" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zpp_warping_entry_def.cds_zpp_warping_entry_def_Entities/ChangeEntry" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zpp_warping_entry_def.cds_zpp_warping_entry_def_Entities/Set_No_Cheack" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zpp_warping_entry_def.cds_zpp_warping_entry_def_Entities/Set_No_F4" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zpp_warping_entry_def.cds_zpp_warping_entry_def_Entities/Warping_Entry" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zpp_warping_entry_def.cds_zpp_warping_entry_def_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Org.OData.Capabilities.V1.BatchSupport">
+                    <Record Type="Org.OData.Capabilities.V1.BatchSupportType">
+                        <PropertyValue Property="ReferencesAcrossChangeSetsSupported" Bool="true"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="https://my405100-api.s4hana.cloud.sap/sap/opu/odata/sap/ZPP_WARPING_ENTRY_BIN/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://my405100-api.s4hana.cloud.sap/sap/opu/odata/sap/ZPP_WARPING_ENTRY_BIN/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

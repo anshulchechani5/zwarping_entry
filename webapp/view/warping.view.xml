@@ -1,0 +1,159 @@
+<mvc:View controllerName="WarpingEntry.zppwarpingentry.controller.warping"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:F="sap.ui.layout.form"
+    xmlns:C="sap.ui.core"
+    xmlns:Tab="sap.ui.table"  
+    xmlns:table="sap.ui.table" 
+    xmlns:l="sap.ui.layout"
+    width="100%">
+    <Page id="warping" title="{i18n>title}">
+         <F:SimpleForm id="Form1" layout="ResponsiveGridLayout" columnsL="4" editable="true">
+                <F:content>
+                <C:Title id="ctitle4" text="Warping Entry"/>
+                    <Label id="setno" text="Set No." />
+                    <Input id="Setno"    width="150PX" editable="false"/>
+                     <!-- <ComboBox items="{/Warping_Entry}" showSecondaryValues="true"  width="150PX" id="Setno">
+                    <items>
+                        <C:ListItem text="{ZfsetNo}" key="{ZfsetNo}" />
+                    </items>
+                    </ComboBox> -->
+                    <Label id="rebeam" text="No. of Beam" />
+                    <Input id="Rebeam" maxLength="4" submit="onaddtable"  width="150PX" editable="true"/>  
+                    
+                    <Label id="yarncountlabel" text="Yarn Count." />
+                    <Input id="yarn" maxLength="2"  width="150PX" editable="false"/>
+                    <Label id="PoDt"  design="Bold" text="Posting Date" />
+					<DatePicker editable="false" width="150px" id="PostingDate" value="{oPayloadData>/PostingDate}" displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd" placeholder="Please Select Posting Date" />
+                    <C:Title id="ctitle1"/>
+                   
+                     <Label id="beamin" text="Beam in 1 Creel" />
+                    <Input id="beamin1creel"  width="150PX" editable="true"/>  
+                     <Label id="supplier" text="Supplier Con Weight" />
+                    <Input id="supplierconweight"  width="150PX" editable="true"/>  
+                   <Label id="ProductionOrder" text="Production Order" />
+                    <Input id="idProductionOrder"  width="150PX" editable="true"/>  
+                   
+                    <C:Title id="ctitle2"/>
+                     <Label id="avgbpmm" text="Avg. BPMM" />
+                     <Input id="AVGBPMM" width="150PX" editable="false" />
+                     <Label id="TotalEndsLabel" text="Total End" />
+                     <Input id="TotalEnd" width="150PX" editable="false"/>
+                     <Label id="setlength" text="Set Length" />
+                     <Input id="idsetlength" width="150PX" editable="false"/>
+                     <Label id="usetlength" text="Utilized Set Length" />
+                     <Input id="idutilizedsetlength" width="150PX" editable="false"/>
+                     <Label id="diffsetlength" text="Diff. Set Length" />
+                     <Input id="iddiffsetlength" width="150PX" editable="false"/> 
+                    <C:Title id="ctitle3"/>
+                     <Label id="GrossWtLabel" text="Gross Wt." />
+                    <Input id="GrossWt" width="150PX" editable="false"/>
+                    <Label id="TareWtLabel" text="Tare Wt." />
+                    <Input id="TareWt" width="150PX" editable="false"/>
+                    <Label id="NetWtLabel" text="Net Wt" />
+                    <Input id="NetWt" width="150PX" editable="false" />
+                </F:content>
+        </F:SimpleForm>
+        <Tab:Table id="Table"   width="auto" rows="{TableDataModel>/aTableData}">
+                      <table:extension>
+                        <OverflowToolbar  id="oftb" style="Clear">
+                            <ToolbarSpacer id="tbs" />
+                            <Button id="bt2" text="Delete" tooltip="Delete Table records"  icon="sap-icon://delete" press="handleDelete"  />
+                        </OverflowToolbar>
+                    </table:extension>
+                    <Tab:columns>
+                        <Tab:Column id="Table_tc1" width="100%">
+                            <Label id="Table_Label1" text="Set No." />
+                            <Tab:template>
+                                <Input id="Table_Input1" type="Text" maxLength="8" editable="false" value="{TableDataModel>setno}"/>
+                            </Tab:template>
+                        </Tab:Column>
+                        <!-- <Tab:Column id="Table_tc2" width="100%">
+                            <Label id="Table_Label2" text="Set Length" />
+                            <Tab:template>
+                                <Input id="Table_Input2" type="Text"  editable="false" value="{TableDataModel>setlength}"/>
+                            </Tab:template>
+                        </Tab:Column> -->
+                        <Tab:Column id="Table_tc3" width="100%">
+                            <Label id="Table_Label3" text="Warping Mc No." />
+                            <Tab:template>
+                                <Input id="Table_Input3" type="Text" maxLength="1" editable="false" value="{TableDataModel>Warpingmcno}"/>
+                            </Tab:template>
+                        </Tab:Column>
+                        <Tab:Column id="Table_tc4" width="100%">
+                            <Label id="Table_Label4" text="Dyeing Sort" />
+                            <Tab:template>
+                                <Input id="Table_Input4" type="Text" editable="false" value="{TableDataModel>dyeingsort}"/>
+                            </Tab:template>
+                        </Tab:Column>
+                        <Tab:Column id="Table_tc6" width="100%">
+                            <Label id="Table_Label6" text="Ends " />
+                            <Tab:template>
+                                <Input id="Table_Input6" submit="ontotalnetwt" type="Text" maxLength="6" editable="true" value="{TableDataModel>ends}"/>
+                            </Tab:template>
+                        </Tab:Column>
+                        <Tab:Column id="Table_tc7" width="100%">
+                            <Label id="Table_Label7" text="Warper Beam No." />
+                            <Tab:template>
+                                <!-- <Input id="Table_Input7" type="Text" maxLength="5" editable="true" value="{TableDataModel>Beamno}"/> -->
+                                <ComboBox  id="ansh"  items="{path : '/BeamNo',length : '100000'}" change="total" width="150PX" value="{TableDataModel>Beamno}" editable="true" showSecondaryValues="true" >
+                                <items>
+                                <C:ListItem id="mkl" text="{Beamno}" key="{Beamno}" additionalText="{Beamwt}" />
+                                </items>
+                        </ComboBox>
+                            </Tab:template>
+                        </Tab:Column>
+                        <Tab:Column id="Table_tc8" width="100%">
+                            <Label id="Table_Label8" text="Beam Length" />
+                            <Tab:template>
+                                <Input id="Table_Input8" type="Text" submit="TotalingValueField" maxLength="7" editable="true" value="{TableDataModel>Beamlength}"/>
+                            </Tab:template>
+                        </Tab:Column>
+                        <Tab:Column id="Table_tc9" width="100%">
+                            <Label id="Table_Label9" text="Gross Wt." />
+                            <Tab:template>
+                                <Input id="Table_Input9" type="Text" submit="TotalingValueField" maxLength="7" editable="true" value="{TableDataModel>GrossWt}"/>
+                            </Tab:template>
+                        </Tab:Column>
+                        <Tab:Column id="Table_tc10" width="100%">
+                            <Label id="Table_Label10" text="Tare Wt" />
+                            <Tab:template>
+                                <Input id="Table_Input10" type="Text" maxLength="7" submit="total" editable="true" value="{TableDataModel>tarewt}"/>
+                            </Tab:template>
+                        </Tab:Column>
+                        <Tab:Column id="Table_tc11" width="100%">
+                            <Label id="Table_Label11" text="Net Wt." />
+                            <Tab:template>
+                                <Input id="Table_Input11" type="Text" maxLength="7" editable="true" value="{TableDataModel>Netwt}"/>
+                            </Tab:template>
+                        </Tab:Column>
+                        <Tab:Column id="Table_tc13" width="100%">
+                            <Label id="Table_Label13" text="Warper" />
+                            <Tab:template>
+                                <Input id="Table_Input13" type="Text" maxLength="10" editable="true" value="{TableDataModel>Warper}"/>
+                            </Tab:template>
+                        </Tab:Column>
+                         <Tab:Column id="Table_tc15" width="100%">
+                            <Label id="Table_Label76" text="Breaks" />
+                            <Tab:template>
+                                <Input id="Table_tc25"  type="Text" submit="Breaks" maxLength="10" editable="true" value="{TableDataModel>Breaks}"/>
+                            </Tab:template>
+                        </Tab:Column>
+                         <Tab:Column id="Table_tc16"  width="100%">
+                            <Label  id="Table_tc19" text="Breaks/Million Mtr." />
+                            <Tab:template>
+                                <Input  id="Table_tc20" type="Text" maxLength="10" editable="true" value="{TableDataModel>Breakmilion}"/>
+                            </Tab:template>
+                        </Tab:Column>
+                    </Tab:columns>
+        </Tab:Table>
+        <footer>
+            <Bar id="bar">
+                <contentRight>
+                    <Button id="button" visible="{oGenericModel>/setEditable}" icon="sap-icon://save" text="Save" type="Emphasized" press="saveData" />
+                    <!-- <Button icon="sap-icon://save" text="Save" type="Emphasized" press="monogramsave" /> -->
+                </contentRight>
+            </Bar>
+        </footer>
+    </Page>
+</mvc:View>
